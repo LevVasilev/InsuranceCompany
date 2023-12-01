@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#" th:href="@{/}">Insurance Company</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" th:href="@{/}">Главная</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--Navbar-->
+
+
+<!--Form-->
+<div class="wr">
+    <div class="wrapper">
+        <div th:if="${param.success}">
+            <div class="alert alert-info">Вы зарегистрированы</div>
+        </div>
+        <header>Регистрация</header>
+        <div class="heading-line"></div>
+        <form th:action="@{/registration}" method="post" th:object="${user}">
+
+            <div class="field firstName">
+                <div class="input-area">
+                    <input id="inputname" type="text" placeholder="Имя" th:field="*{firstName}" required autofocus="autofocus">
+                    <i class="icon fas fa-user"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+            </div>
+
+            <div class="field lastName">
+                <div class="input-area">
+                    <input id="inputsurname" type="text" placeholder="Фамилия" th:field="*{lastName}" required autofocus="autofocus">
+                    <i class="icon fas fa-user"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+            </div>
+            <div class="field passport">
+                <div class="input-area">
+                    <input id="inputpassport" type="text" placeholder="Паспорт" th:field="*{passport}" required autofocus="autofocus">
+                    <i class="icon fas fa-user"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+            </div>
+
+            <div class="field email">
+                <div class="input-area">
+                    <input id="inputemail" type="text" placeholder="Email Address" th:field="*{email}" required autofocus="autofocus">
+                    <i class="icon fas fa-envelope"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+            </div>
+
+            <div class="field phoneNumber">
+                <div class="input-area">
+                    <input id="inputphone" type="text" placeholder="Номер телефона" th:field="*{number}" required autofocus="autofocus">
+                    <i class="icon fas fa-phone"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+            </div>
+
+            <div class="field password">
+                <div class="input-area">
+                    <input id="inputpassword" type="password" placeholder="Password" th:field="*{password}" required autofocus="autofocus">
+                    <i class="icon fas fa-lock"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+            </div>
+            <div>
+                <button id="signup-submit" type="submit" class="form-control btn btn-success" style="background: #93c1f3; border-color: #93c1f3;">Зарегистрироваться</button>
+            </div>
+            <div>
+                <span  class="spann"><a style="color: #93c1f3" href="/" th:href="@{/login}">Войти</a></span>
+            </div>
+        </form>
+    </div>
+</div>
+<!--Form-->
+
+</body>
+</html>

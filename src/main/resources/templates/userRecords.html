@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои услуги</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+         table {
+            width: 80%; /* Ширина таблицы */
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            border: 1px solid #dddddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .container-table {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .container-start{
+            margin-left: 10px;
+            }
+    </style>
+</head>
+<body>
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark" style="margin-bottom: 50px">
+    <div class="container-start">
+        <a class="navbar-brand" href="#" th:href="@{/}">Insurance Company</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" th:href="@{/}">Главная</a>
+                        <li><a class="dropdown-item" href="#" sec:authorize="hasRole('ROLE_USER')" th:href="@{/userRecords}">Мои услуги</a></li>
+                        <li><a class="dropdown-item" href="#" th:href="@{/logout}">Выйти</a></li>
+                        <li><a class="dropdown-item" href="#" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">Все заказы</a></li>
+                </li>
+                <a href="#" sec:authorize="!isAuthenticated()" class="btn btn-entrance" th:href="@{/login}">Войти</a>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--Navbar-->
+
+<section class="about">
+    <div class="container container-table">
+        <div class="row">
+            <div class="col-12" style="margin-top: 50px;">
+                <h2 class="text-center text-uppercase mb-4" style="color: black">Мои услуги</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container container-table">
+        <table class="table color2">
+            <thead>
+            <tr>
+                <th scope="col">Вид страхования</th>
+                <th scope="col">Цена за месяц</th>
+                <th scope="col">Период действия</th>
+                <th scope="col">Итоговая стоимость</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-th-each="record : ${records}">
+                <td data-th-text="${record.insurance}"></td>
+                <td data-th-text="${record.priceforonemonth}"></td>
+                <td data-th-text="${record.monthcount}"></td>
+                <td data-th-text="${record.cost}"></td>
+                <td><a th:href = "@{/admin/{id}(id=${record.id})}"
+                       class = "btn btn-danger">Удалить</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>
