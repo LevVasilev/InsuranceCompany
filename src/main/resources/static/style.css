@@ -25,9 +25,6 @@ h6 {
 h3{
     font-size: 25px;
 }
-img {
-    width: 100%;
-}
 
 .heading-line {
     margin-top: 20px;
@@ -61,34 +58,6 @@ img {
     color: inherit;
 }
 
-
-/* NAVBAR */
-
-
-/* START */
-
-.startSection {
-    padding-top: 200px;
-    padding-bottom: 160px;
-}
-
-#start {
-
-    min-height: 100vh;
-    background-position: right;
-    background-size: cover;
-}
-
-.startText {
-    font-family: 'Prata', sans-serif;
-    color: white;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    opacity: 30%;
-}
-
-
-/* START */
 
 
 /* BTN */
@@ -157,38 +126,6 @@ h3 {
     -webkit-font-smoothing: antialiased;
 }
 
-
-/* SERVICES */
-
-
-
-
-
-
-
-
-
-
 h7  {
     color:black
-}
-a.nav-link{
-    text-decoration: none;
-    color: inherit;
-}
-a.dropdown-item {
-    text-decoration: none;
-    color: inherit;
-}
-
-a.dropdown-item:hover {
-    color: inherit;
-}
-
-.footer {
-    background-color: white;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    justify-content: center;
-    text-align: center;
 }
